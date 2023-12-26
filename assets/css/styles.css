@@ -39,12 +39,52 @@ button {
     font-family: inherit;
 }
 
+.page-section {
+    position: relative;
+    padding-top: clamp(50px, 5.20833333vw, 100px);
+    padding-bottom: clamp(50px, 5.20833333vw, 100px);
+}
+
+.container-small {
+    padding: 0 35px;
+}
+
+.section-intro {
+    margin-bottom: clamp(30px, 3.125vw, 60px);
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.section-title {
+    margin: 7px 0 0;
+    font-weight: 700;
+    font-size: 3.6rem;
+}
+
+.justify-content-center {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
 /* Top header */
 .header-content {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background-color: #fff;
+    z-index: 1;
 }
 
 .top-header {
@@ -160,9 +200,13 @@ button {
 }
 
 .main-header .logo {
-    max-width: 150px;
+    max-width: 95px;
     height: auto;
     margin-left: 30px;
+}
+
+.logo:hover {
+    cursor: pointer;
 }
 
 .header-menu .main-menu-container > ul {
@@ -175,18 +219,20 @@ button {
 
 .header-menu .main-menu-container > ul a {
     display: flex;
-    padding: 0 10px;
+    padding: 10px 10px 10px;
     align-items: center;
     justify-content: space-between;
     color: #463969;
 }
 
 .header-menu .main-menu-container > ul a:hover {
+    border-bottom: 3px solid var(--primary-color);
     color: #00b2e3;
 }
 
 .banner {
     display: inline-block;
+    margin-top: 127px;
     padding: 99px 0;
     width: 100%;
     height: 502px;
@@ -206,6 +252,17 @@ button {
     line-height: 1;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.77);
     color: #fff;
+    overflow: hidden; /* To hide overflowing text */
+    animation: slideIn 2s forwards; /* Specify animation name and duration */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%); /* Start from the left outside the viewport */
+    }
+    to {
+        transform: translateX(0); /* Move to the center */
+    }
 }
 
 .banner__desc {
@@ -216,6 +273,20 @@ button {
     font-size: 1.6rem;
     line-height: 1.6;
     color: #fff;
+    opacity: 0; /* Initial opacity set to 0 */
+    animation: slideInDesc 2s forwards; /* Specify animation name and duration */
+    animation-delay: 1s; /* Delay the animation by 2 seconds */
+}
+
+@keyframes slideInDesc {
+    from {
+        transform: translateY(100%);
+        opacity: 0; /* Start from the bottom and invisible */
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1; /* Move to the original position and become visible */
+    }
 }
 
 .banner__desc-strong {
@@ -232,6 +303,20 @@ button {
     background: #00b2e3;
     border: none;
     color: #fff;
+    opacity: 0; /* Initial opacity set to 0 */
+    animation: fadeInUp 1.5s forwards; /* Specify animation name and duration */
+    animation-delay: 2s; /* Delay the animation by 3 seconds */
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0; /* Start slightly below and invisible */
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1; /* Move to the original position and become visible */
+    }
 }
 
 .banner__cta-link {
@@ -275,4 +360,63 @@ button {
     margin-left: auto;
     margin-right: auto;
     font-size: 1.8rem;
+}
+
+.container-small {
+    max-width: 1500px;
+}
+
+.card-column {
+    width: 405px;
+    height: 469px;
+    display: flex;
+    margin: 0 15px 30px;
+    flex-wrap: wrap;
+    background: var(--primary-color);
+}
+
+.card-item__img {
+    width: 100%;
+    height: 275px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-item__img:hover {
+    transform: scale(1.008);
+}
+
+.card-item__down {
+    display: block;
+    width: 405px;
+    height: 194px;
+    padding: 15px 25px;
+}
+
+.card-item__uppercase {
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.card-item__subtitle {
+    font-weight: 400;
+    margin: 15px 0 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.card-item__arrow {
+    width: 355px;
+    height: 83px;
+    margin: 22px 0 0;
+    padding: 20px 0 10px;
+    font-size: 6rem;
+    background: var(--primary-color);
+}
+
+.card-item__arrow-fal {
+    display: block;
+    width: 33px;
+    height: 53px;
+    color: #00b2e3;
 }
